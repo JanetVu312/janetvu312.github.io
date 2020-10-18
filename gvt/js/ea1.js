@@ -1,4 +1,4 @@
-// START EA1 Spinning Vinyl
+// START EA1 Spinning Earth
 var i = 0;
 
 function myFunction(event) {
@@ -102,7 +102,7 @@ function myFunction(event) {
     }
   }
 }
-// SND EA1 Spinning Vinyl
+// SND EA1 Spinning Earth
 
 
 // START Sprite-Sheet Animation
