@@ -52,7 +52,7 @@ a.link {
   color: black
 }
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Barlow', sans-serif;
 }
 .primary_header {
   width: 100%;
@@ -83,7 +83,7 @@ a.link {
   float: left;
   margin-right: auto;
   margin-top: 0px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Barlow', sans-serif;
   font-weight: normal;
   color: black;
   letter-spacing: 1px;
@@ -100,7 +100,7 @@ a.link {
   background-color: #FFFFFF;
   width: 60%;
   float: left;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Barlow', sans-serif;
   color: #343434;
   padding-bottom: 15px;
 }
