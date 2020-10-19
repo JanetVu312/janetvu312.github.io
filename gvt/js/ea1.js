@@ -117,8 +117,8 @@ function stopAnimate() {
 function animateScript() {
 
   var position = 520; //Startposition
-  const interval = 200; //Interval in ms
-  const diff = 520; //Diff
+  const interval = 250; //Interval in ms
+  const diff = 520; //Diff 520
 
   tID = setInterval(() => {
 
