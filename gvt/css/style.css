@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* EA 1 */
-.vinyl {
+.earth {
   width: 500px;
   height: 500px;
   padding: 50px
@@ -10,9 +10,9 @@
   height: 259px;
   width: 500px;
   background:
-    url('../images/ea1/sprite-sheet-man.png') 0px 0px;
+    url('../images/ea1/sprite-sheet-butterfly.png') 0px 0px;
 }
-.puma {
+.butterfly {
   padding: 50px
 }
 /* General CSS */
