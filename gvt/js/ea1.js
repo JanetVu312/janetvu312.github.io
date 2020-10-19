@@ -117,7 +117,7 @@ function stopAnimate() {
 function animateScript() {
 
   var position = 520; //Startposition
-  const interval = 300; //Interval in ms
+  const interval = 200; //Interval in ms
   const diff = 520; //Diff 520
 
   tID = setInterval(() => {
@@ -126,7 +126,7 @@ function animateScript() {
       `-${position}px 0px`;
 
 
-    if (position < 4160) {
+    if (position < 4160) { 
       position = position + diff;
     }
     //Position immer um Diff ergänzen
