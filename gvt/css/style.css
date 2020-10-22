@@ -10,9 +10,9 @@
   height: 259px;
   width: 200px;
   background:
-    url('../images/ea1/sprite-sheet-butterfly.png') 0px 0px;
+    url('../images/ea1/sprite-sheet-people.png') 0px 0px;
 }
-.butterfly {
+.people {
   padding: 50px
 }
 /* General CSS */
