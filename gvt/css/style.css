@@ -52,7 +52,7 @@ a.link {
   color: black
 }
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Staatliches', cursive;
+  font-family: 'Advent Pro', sans-serif;
 }
 .primary_header {
   width: 100%;
@@ -83,7 +83,7 @@ a.link {
   float: left;
   margin-right: auto;
   margin-top: 0px;
-  font-family: 'Staatliches', cursive;
+  font-family: 'Advent Pro', sans-serif;
   font-weight: normal;
   color: black;
   letter-spacing: 1px;
@@ -100,7 +100,7 @@ a.link {
   background-color: #FFFFFF;
   width: 60%;
   float: left;
-  font-family: 'Staatliches', cursive;
+  font-family: 'Advent Pro', sans-serif;
   color: #343434;
   padding-bottom: 15px;
 }
@@ -140,7 +140,7 @@ a.link {
   padding-left: 0px;
 }
 .right_article ul li {
-  font-family: 'Staatliches', cursive;
+  font-family: 'Advent Pro', sans-serif;
   list-style: none;
   text-align: center;
   background-color: #B3B3B3;
@@ -164,7 +164,7 @@ a.link {
 .title {
   font-weight: bold;
   font-style: normal;
-  font-family: 'Staatliches', cursive;
+  font-family: 'Advent Pro', sans-serif;
   text-align: center;
   color: black;
   letter-spacing: 2px;
@@ -188,13 +188,13 @@ a.link {
 }
 .container .column_half.left_half h2 {
   color: #FFFFFF;
-  font-family: 'Staatliches', cursive;
+  font-family: 'Advent Pro', sans-serif;
   text-align: center;
 }
 .right_half {
   background-color: #01B2D1;
   color: #FFFFFF;
-  font-family: 'Staatliches', cursive;
+  font-family: 'Advent Pro', sans-serif;
   text-align: center;
   font-weight: bold;
 }
@@ -208,7 +208,7 @@ body {
   margin-bottom: 0px;
   margin-left: 0px;
   background-color: white;
-  font-family: 'Staatliches', cursive;
+  font-family: 'Advent Pro', sans-serif;
 }
 @media (max-width: 320px) {
   .secondary_header ul li {
