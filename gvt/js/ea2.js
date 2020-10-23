@@ -8,7 +8,7 @@ window.onload = function () {
     + 'void main(){ gl_Position = vec4(pos *  0.85, 0, 3);'
     + 'gl_PointSize = 10.0; }';
 	
-	gl.clearColor(2, 3, 0, 1); //2, 3, 0, 1
+	gl.clearColor(2, 3, 0, 1);
 
   var vs = gl.createShader(gl.VERTEX_SHADER);
   gl.shaderSource(vs, vsSource);
