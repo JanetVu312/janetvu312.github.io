@@ -16,7 +16,7 @@ window.onload = function () {
   // END EA 2
 
   // START EA 2 - Color
-  var fsSource = 'void main() { gl_FragColor = vec4(0.149, 0.141, 0.912); }'; //3, 0.51, 0.77, 3
+  var fsSource = 'void main() { gl_FragColor = vec4(0, 0, 0, 0); }'; //3, 0.51, 0.77, 3
   // END EA 2
 
   var fs = gl.createShader(gl.FRAGMENT_SHADER);
