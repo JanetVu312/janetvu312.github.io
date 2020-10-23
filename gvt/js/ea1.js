@@ -116,7 +116,7 @@ function stopAnimate() {
 
 function animateScript() {
 
-  var position = 500; //520 Startposition
+  var position = 450; //520 Startposition
   const interval = 200; //Interval in ms
   const diff = 520; //Diff 520
 
