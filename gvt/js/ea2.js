@@ -8,7 +8,7 @@ window.onload = function () {
     + 'void main(){ gl_Position = vec4(pos *  0.85, 0, 3);'
     + 'gl_PointSize = 10.0; }';
 	
-	gl.clearColor(2, 3, 0, 1); 
+	gl.clearColor(0, 0, 0, 0); //2, 3, 0, 1
 
   var vs = gl.createShader(gl.VERTEX_SHADER);
   gl.shaderSource(vs, vsSource);
@@ -16,7 +16,7 @@ window.onload = function () {
   // END EA 2
 
   // START EA 2 - Color
-  var fsSource = 'void main() { gl_FragColor = vec4(0, 0, 0, 0); }'; //3, 0.51, 0.77, 3
+  var fsSource = 'void main() { gl_FragColor = vec4(3, 0.51, 0.77, 3); }'; 
   // END EA 2
 
   var fs = gl.createShader(gl.FRAGMENT_SHADER);
