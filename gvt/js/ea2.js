@@ -66,11 +66,8 @@ window.onload = function () {
     -0.75, 1.5, 
     0, 0,
     0.75, 1.5,
-    -0.75, 1.5, //30
+    -0.75, 1.5, 
     -0.5, 0.5
-
-
-    
 
   ]);
 
@@ -90,6 +87,6 @@ window.onload = function () {
   // Clear framebuffer and render primitives
   gl.clear(gl.COLOR_BUFFER_BIT);
   // START
-  gl.drawArrays(gl.LINE_LOOP, 0, 31); //28
+  gl.drawArrays(gl.LINE_LOOP, 0, 31); 
   // END EA 2
 };
