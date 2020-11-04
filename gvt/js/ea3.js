@@ -93,21 +93,14 @@
             // START EA3
 
             var vertices = new Float32Array([
-
               0, 0, 0,
               0.5, 0.2, 0,
               0.7, 0.65, 0, // 2
-
               0.5, 1.2, 0, //3
-
               0, 1.5, 0, // 4.
-
               -0.5, 1.2, 0, //5
-
               -0.7, 0.65, 0, //6
-
               -0.5, 0.2, 0, //7
-
               -0.5, 0.2, 0,
 
             ]);
@@ -115,7 +108,6 @@
 
             var colors = new Float32Array([
               1, 0, 0, 1, 0, 1, 0, 1,
-
               0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1,
               0, 1, 1, 1,
               1, 0, 1, 1,
@@ -190,4 +182,4 @@
 
             gl.drawElements(gl.TRIANGLES, ibo.numerOfEmements,
 
-              gl.UNSIGNED_SHORT, 0);
+              gl.UNSIGNED_SHORT, 9);
