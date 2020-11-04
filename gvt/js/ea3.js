@@ -182,4 +182,4 @@
 
             gl.drawElements(gl.TRIANGLES, ibo.numerOfEmements,
 
-              gl.UNSIGNED_SHORT, 9);
+              gl.UNSIGNED_SHORT, 0);
