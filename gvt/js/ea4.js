@@ -105,7 +105,9 @@ window.onload = function () {
     //START EA4
 
     // Setup rendering tris.
-   // gl.vertexAttrib4f(colAttribShape, 0.2, 0.2, 0.2, 1); //fill color
+    //gl.vertexAttrib4f(colAttribShape, 0.2, 0.2, 0.2, 1); //fill color
+    gl.disableVertexAttribArray(colAttrib);
+    gl.vertexAttrib3f(colAttrib, 0.2, 0.2, 0.2, 1); 
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboTrisShape);
     gl.drawElements(gl.TRIANGLES, iboTrisShape.numberOfElements, gl.UNSIGNED_SHORT, 0);
 
@@ -237,7 +239,7 @@ window.onload = function () {
 
     // Setup rendering lines.
     gl.disableVertexAttribArray(colAttrib);
-    gl.vertexAttrib4f(colAttrib, 1, 1, 1, 1);
+    gl.vertexAttrib4f(colAttrib, 0.2, 0.2, 0.2, 1);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboLines);
     gl.drawElements(gl.LINES,
         iboLines.numberOfElements, gl.UNSIGNED_SHORT, 0);
