@@ -106,14 +106,15 @@ window.onload = function () {
     //START EA4
 
     // Setup rendering tris.
-   // gl.vertexAttrib4f(colAttribHelix, 0.2, 0.2, 0.2, 1); //fill color
+    //gl.disableVertexAttribArray(colAttrib);
+    //gl.vertexAttrib4f(colAttribHelix, 0.2, 0.2, 0.2, 1); //fill color
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboTrisHelix);
     gl.drawElements(gl.TRIANGLES, iboTrisHelix.numberOfElements, gl.UNSIGNED_SHORT, 0);
 
     // Setup rendering lines.
    // gl.vertexAttrib4f(colAttribHelix, 0.5, 0.6, 0.7, 1); //line color
 	gl.disableVertexAttribArray(colAttrib);
-	gl.vertexAttrib3f(colAttrib, 0, 0, 0, 2);
+	gl.vertexAttrib3f(colAttrib, 0.5, 0.6, 0.7, 1);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboLinesHelix);
     gl.drawElements(gl.LINES, iboLinesHelix.numberOfElements, gl.UNSIGNED_SHORT, 0);
 	
@@ -121,11 +122,11 @@ window.onload = function () {
    function createVertexDataHelix() {     // 
             var n = 40;
             var m = 18;
-    var a = 1;
-    var b = 3.2;
-    var c = 0.51;
-    var du = 6 * Math.PI / n;
-    var dv = 4 * Math.PI / m;
+    var a = 0.8; //1
+    var b = 3.3; //3.2
+    var c = 0.51; //0.51
+    var du = 7 * Math.PI / n; //6
+    var dv = 4 * Math.PI / m; //4
 
             // Positions.
             verticesHelix = new Float32Array(3 * (n + 1) * (m + 1));
@@ -231,7 +232,8 @@ window.onload = function () {
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
 
     // Setup rendering tris.
-   // gl.vertexAttrib4f(colAttrib, 0, 0, 0.2, 1);
+    gl.disableVertexAttribArray(colAttrib);
+    gl.vertexAttrib4f(colAttrib, 0.23, 1.05, 0.9, 1);
   
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboTris);
     gl.drawElements(gl.TRIANGLES,
