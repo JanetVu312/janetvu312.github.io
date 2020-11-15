@@ -3,7 +3,8 @@ window.onload = function () {
     var gl = canvas.getContext('experimental-webgl');
 
     // Pipeline setup.
-    gl.clearColor(0.0, 0.0, 0.0, 0.0);  //0.1, 0.1, 0.6, 0.2            
+    //gl.clearColor(0.1, 0.1, 0.6, 0.2);
+	 gl.clearColor(0, 0, 0, 0);
 	
     // Backface culling.
     gl.frontFace(gl.CCW);
@@ -46,28 +47,28 @@ window.onload = function () {
     gl.linkProgram(prog);
     gl.useProgram(prog);
 
-    // Vertex data Shape.
+    // Vertex data Helix.
     // Positions, Index data.
-    var verticesShape, normalsShape, colorsShape, indicesLinesShape, indicesTrisShape;
+    var verticesHelix, normalsHelix, colorsHelix, indicesLinesHelix, indicesTrisHelix;
 
     // Fill the data arrays.
-    createVertexDataShape();
+    createVertexDataHelix();
 
     // Setup position vertex buffer object.
-    var vboPosShape = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, vboPosShape);
-    gl.bufferData(gl.ARRAY_BUFFER, verticesShape, gl.STATIC_DRAW);
+    var vboPosHelix = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, vboPosHelix);
+    gl.bufferData(gl.ARRAY_BUFFER, verticesHelix, gl.STATIC_DRAW);
 
     // Bind vertex buffer to attribute variable.
-    var posAttribShape = gl.getAttribLocation(prog, 'pos');
-    gl.vertexAttribPointer(posAttribShape, 3, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(posAttribShape);
+    var posAttribHelix = gl.getAttribLocation(prog, 'pos');
+    gl.vertexAttribPointer(posAttribHelix, 3, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(posAttribHelix);
 	
 	// Setup normal vertex buffer object.
     var vboNormal = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vboNormal);
     gl.bufferData(gl.ARRAY_BUFFER,
-    normalsShape, gl.STATIC_DRAW);
+    normalsHelix, gl.STATIC_DRAW);
 
     // Bind buffer to attribute variable.
     var colAttrib = gl.getAttribLocation(prog, 'col');
@@ -76,23 +77,23 @@ window.onload = function () {
     gl.enableVertexAttribArray(colAttrib);
 
     // Setup constant color.
-   // var vboColShape = gl.createBuffer();
-   // gl.bindBuffer(gl.ARRAY_BUFFER, vboColShape);
-   // gl.bufferData(gl.ARRAY_BUFFER, colorsShape, gl.STATIC_DRAW);
+   // var vboColHelix = gl.createBuffer();
+   // gl.bindBuffer(gl.ARRAY_BUFFER, vboColHelix);
+   // gl.bufferData(gl.ARRAY_BUFFER, colorsHelix, gl.STATIC_DRAW);
 
 
     // Setup lines index buffer object.
-    var iboLinesShape = gl.createBuffer();
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboLinesShape);
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indicesLinesShape, gl.STATIC_DRAW);
-    iboLinesShape.numberOfElements = indicesLinesShape.length;
+    var iboLinesHelix = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboLinesHelix);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indicesLinesHelix, gl.STATIC_DRAW);
+    iboLinesHelix.numberOfElements = indicesLinesHelix.length;
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
 
     // Setup tris index buffer object.
-    var iboTrisShape = gl.createBuffer();
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboTrisShape);
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indicesTrisShape, gl.STATIC_DRAW);
-    iboTrisShape.numberOfElements = indicesTrisShape.length;
+    var iboTrisHelix = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboTrisHelix);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indicesTrisHelix, gl.STATIC_DRAW);
+    iboTrisHelix.numberOfElements = indicesTrisHelix.length;
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
 
     // Clear framebuffer and render primitives.
@@ -100,39 +101,39 @@ window.onload = function () {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     // Bind vertex buffer to attribute variable.
-    var colAttribShape = gl.getAttribLocation(prog, 'col');
+    var colAttribHelix = gl.getAttribLocation(prog, 'col');
 
     //START EA4
 
     // Setup rendering tris.
-   // gl.vertexAttrib4f(colAttribShape, 0.2, 0.2, 0.2, 1); //fill color
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboTrisShape);
-    gl.drawElements(gl.TRIANGLES, iboTrisShape.numberOfElements, gl.UNSIGNED_SHORT, 0);
+   // gl.vertexAttrib4f(colAttribHelix, 0.2, 0.2, 0.2, 1); //fill color
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboTrisHelix);
+    gl.drawElements(gl.TRIANGLES, iboTrisHelix.numberOfElements, gl.UNSIGNED_SHORT, 0);
 
     // Setup rendering lines.
-    //gl.vertexAttrib4f(colAttribShape, 0.5, 0.6, 0.7, 1); //line color
+   // gl.vertexAttrib4f(colAttribHelix, 0.5, 0.6, 0.7, 1); //line color
 	gl.disableVertexAttribArray(colAttrib);
-	gl.vertexAttrib3f(colAttrib, 0.2, 0.2, 0.2, 1); //1, 2, 0, 2
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboLinesShape);
-    gl.drawElements(gl.LINES, iboLinesShape.numberOfElements, gl.UNSIGNED_SHORT, 0);
+	gl.vertexAttrib3f(colAttrib, 0, 0, 0, 2);
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboLinesHelix);
+    gl.drawElements(gl.LINES, iboLinesHelix.numberOfElements, gl.UNSIGNED_SHORT, 0);
 	
 
-   function createVertexDataShape() {     // 
-            var n = 60; //32
-            var m = 30; //19
-            var a = 1.7; //1.7
-            var b = 3.3; //2.99
-            var c = 0.4; //0.45
-            var du = 5 * Math.PI / n; //5
-            var dv = 2 * Math.PI / m; //2
+   function createVertexDataHelix() {     // 
+            var n = 40;
+            var m = 18;
+    var a = 1;
+    var b = 3.2;
+    var c = 0.51;
+    var du = 6 * Math.PI / n;
+    var dv = 4 * Math.PI / m;
 
             // Positions.
-            verticesShape = new Float32Array(3 * (n + 1) * (m + 1)); 
+            verticesHelix = new Float32Array(3 * (n + 1) * (m + 1));
             // Index data.
-            indicesLinesShape = new Uint16Array(2 * 2 * n * m);
-            indicesTrisShape = new Uint16Array(3 * 2 * n * m);
+            indicesLinesHelix = new Uint16Array(2 * 2 * n * m);
+            indicesTrisHelix = new Uint16Array(3 * 2 * n * m);
             // Normals.
-            normalsShape = new Float32Array(3 * (n+1) * (m+1));
+            normalsHelix = new Float32Array(3 * (n + 1) * (m + 1));
 
             // Counter for entries in index array.
             var iLines = 0;
@@ -150,38 +151,38 @@ window.onload = function () {
                     var z = (a * (-1 + h) * Math.sin(u) * Math.cos(0.5 * v) * Math.cos(0.5 * v)) * c;
 
                     // Set vertex positions.
-                    verticesShape[iVertex * 3] = x;
-                    verticesShape[iVertex * 3 + 1] = y;
-                    verticesShape[iVertex * 3 + 2] = z;
+                    verticesHelix[iVertex * 3] = x;
+                    verticesHelix[iVertex * 3 + 1] = y;
+                    verticesHelix[iVertex * 3 + 2] = z;
 					
 					// Calc and set normals.
                     var vertexLength = Math.sqrt(x*x+y*y+z*z);
-                    normalsShape[iVertex * 3] = x/vertexLength;
-                    normalsShape[iVertex * 3 + 2] = y/vertexLength;
-                    normalsShape[iVertex * 3 + 2] = z/vertexLength;
+                    normalsHelix[iVertex * 3] = x/vertexLength;
+                    normalsHelix[iVertex * 3 + 2] = y/vertexLength;
+                    normalsHelix[iVertex * 3 + 2] = z/vertexLength;
 
                     // Set index.
                     // Line on beam.
                     if (j > 0 && i > 0) {
-                        indicesLinesShape[iLines++] = iVertex - 1;
-                        indicesLinesShape[iLines++] = iVertex;
+                        indicesLinesHelix[iLines++] = iVertex - 1;
+                        indicesLinesHelix[iLines++] = iVertex;
                     }
                     // Line on ring.
                     if (j > 0 && i > 0) {
-                        indicesLinesShape[iLines++] = iVertex - (m + 1);
-                        indicesLinesShape[iLines++] = iVertex;
+                        indicesLinesHelix[iLines++] = iVertex - (m + 1);
+                        indicesLinesHelix[iLines++] = iVertex;
                     }
 
                     // Set index.
                     // Two Triangles.
                     if (j > 0 && i > 0) {
-                        indicesTrisShape[iTris++] = iVertex;
-                        indicesTrisShape[iTris++] = iVertex - 1;
-                        indicesTrisShape[iTris++] = iVertex - (m + 1);
+                        indicesTrisHelix[iTris++] = iVertex;
+                        indicesTrisHelix[iTris++] = iVertex - 1;
+                        indicesTrisHelix[iTris++] = iVertex - (m + 1);
 
-                        indicesTrisShape[iTris++] = iVertex - 1;
-                        indicesTrisShape[iTris++] = iVertex - (m + 1) - 1;
-                        indicesTrisShape[iTris++] = iVertex - (m + 1);
+                        indicesTrisHelix[iTris++] = iVertex - 1;
+                        indicesTrisHelix[iTris++] = iVertex - (m + 1) - 1;
+                        indicesTrisHelix[iTris++] = iVertex - (m + 1);
                     }
                 }
             }
@@ -191,7 +192,7 @@ window.onload = function () {
     // Positions, index data.
     var vertices, normals, colors, indicesLines, indicesTris;
     // Fill the data arrays.
-    createVertexDataAntisymmetricShape();
+    createVertexDataAntisymmetricHelix();
 
     // Setup position vertex buffer object.
     var vboPos = gl.createBuffer();
@@ -230,37 +231,37 @@ window.onload = function () {
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
 
     // Setup rendering tris.
-    //gl.vertexAttrib4f(colAttrib, 0, 0, 0.2, 1);
-    gl.vertexAttrib4f(colAttrib, 1, 0, 0.518, 1);
+   // gl.vertexAttrib4f(colAttrib, 0, 0, 0.2, 1);
+  
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboTris);
     gl.drawElements(gl.TRIANGLES,
         iboTris.numberOfElements, gl.UNSIGNED_SHORT, 0);
 
     // Setup rendering lines.
     gl.disableVertexAttribArray(colAttrib);
-    gl.vertexAttrib4f(colAttrib, 0.2, 0.2, 0.2, 1);
+    gl.vertexAttrib4f(colAttrib, 0, 0, 0, 1);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboLines);
     gl.drawElements(gl.LINES,
         iboLines.numberOfElements, gl.UNSIGNED_SHORT, 0);
 
-	function createVertexDataAntisymmetricShape() {
-        var n = 50; //40
-        var m = 25; //15
-        var a = 1.15; //1
-        var b = 0.1; //0.15
-        var c = 1.3; //1.5
-        var du = 2 * Math.PI / n;
-        var dv = 2 * Math.PI / m;
+	function createVertexDataAntisymmetricHelix() {
+        var n = 2;
+    var m = 15; //10
+    var a = 1.25; //1
+    var b = 0.1; //0.1
+    var c = 1; //2
+    var du = 2 * Math.PI / n;
+    var dv = 2.3 * Math.PI / m;
 
         // Counter for entries in index array.
         var iLines = 0;
         var iTris = 0;
 
         // Positions.
-        vertices = new Float32Array(3 * (n + 2) * (m + 1));
-        //colors = new Float32Array(1 * (n + 3) * (m + 2));
+        vertices = new Float32Array(3 * (n + 1) * (m + 1));
+        colors = new Float32Array(3 * (n + 1) * (m + 1));
 		
-		normals = new Float32Array(3 * (n+1) * (m+1));
+		normals = new Float32Array(3 * (n + 1) * (m + 1));
 
         // Index data.
         indicesLines = new Uint16Array(2 * 2 * n * m);
