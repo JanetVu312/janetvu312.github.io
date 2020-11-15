@@ -114,19 +114,19 @@ window.onload = function () {
     // Setup rendering lines.
     //gl.vertexAttrib4f(colAttribShape, 0.5, 0.6, 0.7, 1); //line color
 	gl.disableVertexAttribArray(colAttrib);
-	gl.vertexAttrib3f(colAttrib, 1, 0, 0, 0); //1, 2, 0, 2
+	gl.vertexAttrib3f(colAttrib, 1, 0, 0, 0); 
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboLinesShape);
     gl.drawElements(gl.LINES, iboLinesShape.numberOfElements, gl.UNSIGNED_SHORT, 0);
 	
 
-   function createVertexDataShape() {     // 
-            var n = 60; //32
-            var m = 30; //19
-            var a = 1.7; //1.7
-            var b = 3.3; //2.99
-            var c = 0.4; //0.45
-            var du = 5 * Math.PI / n; //5
-            var dv = 2 * Math.PI / m; //2
+   function createVertexDataShape() {     
+            var n = 60; 
+            var m = 30; 
+            var a = 1.7; 
+            var b = 3.3; 
+            var c = 0.4; 
+            var du = 5 * Math.PI / n; 
+            var dv = 2 * Math.PI / m;
 
             // Positions.
             verticesShape = new Float32Array(3 * (n + 1) * (m + 1)); 
@@ -245,11 +245,11 @@ window.onload = function () {
         iboLines.numberOfElements, gl.UNSIGNED_SHORT, 0);
 
 	function createVertexDataAntisymmetricShape() {
-        var n = 50; //40
-        var m = 25; //15
-        var a = 1.15; //1
-        var b = 0.1; //0.15
-        var c = 1.3; //1.5
+        var n = 50; 
+        var m = 25; 
+        var a = 1.15; 
+        var b = 0.1; 
+        var c = 1.3; 
         var du = 2 * Math.PI / n;
         var dv = 2 * Math.PI / m;
 

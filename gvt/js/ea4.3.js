@@ -120,13 +120,13 @@ window.onload = function () {
 	
 
    function createVertexDataHelix() {     // 
-            var n = 40;
-            var m = 18;
-    var a = 0.8; //1
-    var b = 3.3; //3.2
-    var c = 0.51; //0.51
-    var du = 7 * Math.PI / n; //6
-    var dv = 4 * Math.PI / m; //4
+    var n = 40;
+    var m = 18;
+    var a = 0.8; 
+    var b = 3.3; 
+    var c = 0.51; 
+    var du = 7 * Math.PI / n; 
+    var dv = 4 * Math.PI / m; 
 
             // Positions.
             verticesHelix = new Float32Array(3 * (n + 1) * (m + 1));
@@ -248,10 +248,10 @@ window.onload = function () {
 
 	function createVertexDataAntisymmetricHelix() {
         var n = 2;
-    var m = 15; //10
-    var a = 1.25; //1
-    var b = 0.1; //0.1
-    var c = 1; //2
+    var m = 15; 
+    var a = 1.25; 
+    var b = 0.1; 
+    var c = 1; 
     var du = 2 * Math.PI / n;
     var dv = 2.3 * Math.PI / m;
 
