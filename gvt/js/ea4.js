@@ -112,7 +112,7 @@ window.onload = function () {
     // Setup rendering lines.
     //gl.vertexAttrib4f(colAttribShape, 0.5, 0.6, 0.7, 1); //line color
 	gl.disableVertexAttribArray(colAttrib);
-	gl.vertexAttrib3f(colAttrib, 0.2, 0.2, 0.2, 1); //1, 2, 0, 2
+	gl.vertexAttrib3f(colAttrib, 1, 0, 0, 0); //1, 2, 0, 2
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboLinesShape);
     gl.drawElements(gl.LINES, iboLinesShape.numberOfElements, gl.UNSIGNED_SHORT, 0);
 	
@@ -231,14 +231,13 @@ window.onload = function () {
 
     // Setup rendering tris.
     //gl.vertexAttrib4f(colAttrib, 0, 0, 0.2, 1);
-    gl.vertexAttrib4f(colAttrib, 1, 0, 0.518, 1);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboTris);
     gl.drawElements(gl.TRIANGLES,
         iboTris.numberOfElements, gl.UNSIGNED_SHORT, 0);
 
     // Setup rendering lines.
     gl.disableVertexAttribArray(colAttrib);
-    gl.vertexAttrib4f(colAttrib, 0.2, 0.2, 0.2, 1);
+    gl.vertexAttrib4f(colAttrib, 1, 1, 1, 1);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, iboLines);
     gl.drawElements(gl.LINES,
         iboLines.numberOfElements, gl.UNSIGNED_SHORT, 0);
