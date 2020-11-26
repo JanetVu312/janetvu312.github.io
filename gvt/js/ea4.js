@@ -3,7 +3,7 @@ window.onload = function () {
     var gl = canvas.getContext('experimental-webgl');
 
     // Pipeline setup.
-    gl.clearColor(0.0, 0.0, 0.0, 0.0);  //0.1, 0.1, 0.6, 0.2            
+    gl.clearColor(0.0, 0.0, 0.0, 0.0);             
 	
     // Backface culling.
     gl.frontFace(gl.CCW);
