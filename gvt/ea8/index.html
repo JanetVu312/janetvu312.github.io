@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EA8 - Graphical Visualisation Technologies</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@300&display=swap" rel="stylesheet">
+<script src="ext/gl-matrix.js"></script> 
+<script src="GVT_Src_vertexData_plane.js"></script> 
+<script src="GVT_Src_vertexData_sphere.js"></script> 
+<script src="GVT_Src_vertexData_torus.js"></script> 
+<script src="BEL_Src_tpl.js"></script> 
+<script type="x-shader/x-vertex" id="vertexshader">
+			precision mediump float;
+
+			attribute vec3 aPosition;
+			attribute vec3 aNormal;
+
+			uniform mat4 uPMatrix;
+			uniform mat4 uMVMatrix;
+			uniform mat3 uNMatrix;
+
+			//uniform vec4 uColor;
+			varying vec4 vColor;
+
+			// Ambient light.
+			uniform vec3 ambientLight;
+
+			// Pointlights.
+			const int MAX_LIGHT_SOURCES = 8;
+			struct LightSource {
+				bool isOn;
+				vec3 position;
+				vec3 color;
+			};
+			uniform LightSource light[MAX_LIGHT_SOURCES];
+
+			// Material.
+			struct PhongMaterial {
+				vec3 ka;
+				vec3 kd;
+				vec3 ks;
+				float ke;
+			};
+			uniform PhongMaterial material;
+
+			// Phong illumination for single light source,
+			// no ambient light.
+			vec3 phong(vec3 p, vec3 n, vec3 v, LightSource l) {
+
+				vec3 L = l.color;
+
+				vec3 s = normalize(l.position - p);
+				vec3 r = reflect(-s, n);
+
+				float sn = max( dot(s,n), 0.0);
+				float rv = max( dot(r,v), 0.0);
+
+				vec3 diffuse = material.kd * L * sn;
+
+				vec3 specular = material.ks * L * pow(rv, material.ke);
+
+				return diffuse + specular;
+			}
+
+			// Phong illumination for multiple light sources
+			vec3 phong(vec3 p, vec3 n, vec3 v) {
+
+				// Calculate ambient light.
+				vec3 result = material.ka * ambientLight;
+
+				// Add light from all light sources.
+				for(int j=0; j < MAX_LIGHT_SOURCES; j++){
+					if(light[j].isOn){
+						result += phong(p, n, v, light[j]);
+					}
+				}
+				return result;
+			}
+
+			void main(){
+				// Calculate vertex position in eye coordinates.
+				vec4 tPosition = uMVMatrix * vec4(aPosition, 1.0);
+				// Calculate projektion.
+				gl_Position = uPMatrix * tPosition;
+
+				vec3 tNormal = normalize(uNMatrix * aNormal);
+
+				// Calculate view vector.
+				vec3 v = normalize(-tPosition.xyz);
+
+				vColor = vec4( phong(tPosition.xyz, tNormal, v), 1.0);
+			}
+		</script> 
+<script type="x-shader/x-fragment" id="fragmentshader">
+			precision mediump float;
+
+			varying vec4 vColor;
+
+			void main() {
+				gl_FragColor = vColor;
+			}
+		</script>
+</head>
+<body onload="app.start()">
+<header>
+  <nav class="secondary_header" id="menu">
+    <h1 class="title">Graphical Visualisation Technologies</h1>
+    <hr>
+    <ul>
+     <li><a href="../ea1.html">EA #1</a></li>
+      <li><a href="../ea2.html">EA #2</a></li>
+      <li><a href="../ea3.html">EA #3</a></li>
+      <li><a href="../ea4.html">EA #4</a></li>
+      <li><a href="../ea4-erweiterung.html">EA #4.2</a></li>
+      <li><a href="../ea5.html">EA #5</a></li>
+      <li><a href="../ea6/index.html">EA #6</a></li>
+      <li><a href="../ea7/index.html">EA #7</a></li>
+      <li class="active"><a href="../ea8/index.html">EA #8</a></li>
+	  <li><a href="../ea8erw/index.html">EA #8.2</a></li>
+
+    </ul>
+  </nav>
+</header>
+<!-- START EA7 -->
+<div id="ea1" class="container">
+  <div class="row">
+    <div class="col-md-6" style="padding-left:28%;padding-top:30px">
+      <canvas id="canvas" width="500" height="500"></canvas>
+    </div>
+  </div>
+  <div class="row">
+    <center>
+      <p>Press keys to change the light: L left | I right</p>
+    </center>
+  </div>
+</div>
+<!-- END EA7 --> 
+
+<!--<footer class="footer" style="position: fixed">
+  <div class="copyright">TH Lübeck | Janet Vu | Matrikelnr.: 285728</a></div>
+</footer>-->
+</body>
+</html>
